@@ -5,8 +5,8 @@ from tracardi_track_client.model.event_payload import EventPayload
 from tracardi_track_client.model.tracker_payload import TrackerPayload
 import requests
 
-def track(callback_url, source_id, profile_id, session_id, event_type, properties, context=None):
 
+def track(callback_url, source_id, profile_id, session_id, event_type, properties, context=None):
     if context is None:
         context = {}
 
