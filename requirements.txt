@@ -1,1 +1,5 @@
+pydantic
+aiohttp
+aiohttp[speedups]
+requests
 git+https://github.com/Tracardi/tracardi-python-sdk.git

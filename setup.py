@@ -11,7 +11,8 @@ setup(
         'pydantic',
         'aiohttp',
         'aiohttp[speedups]',
-        'requests'
+        'requests',
+        'git+https://github.com/Tracardi/tracardi-python-sdk.git'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
