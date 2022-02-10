@@ -1,8 +1,9 @@
-from tracardi_python_sdk.model.entity import Entity
-from tracardi_python_sdk.model.event_payload import EventPayload
-from tracardi_python_sdk.model.tracker_payload import TrackerPayload
-from tracardi_python_sdk.service.tracardi import Tracardi
+import json
 
+from tracardi_track_client.model.entity import Entity
+from tracardi_track_client.model.event_payload import EventPayload
+from tracardi_track_client.model.tracker_payload import TrackerPayload
+import requests
 
 def track(callback_url, source_id, profile_id, session_id, event_type, properties, context=None):
 
@@ -18,10 +19,10 @@ def track(callback_url, source_id, profile_id, session_id, event_type, propertie
     payload.add_event(event)
 
     payload.context = context
+    data = json.dumps(payload.dict(), default=str)
+    response = requests.post(f"{callback_url}/track", data=data)
 
-    client = Tracardi(callback_url)
-    response = client.track(payload)
-    print(response)
+    print(response.status_code, response.json())
 
 
 if __name__ == "__main__":
