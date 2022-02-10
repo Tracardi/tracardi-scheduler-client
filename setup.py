@@ -8,7 +8,7 @@ setup(
     author_email='risto.kowaczewski@gmail.com',
     packages=['tracardi_track_client'],
     install_requires=[
-        'git+https://github.com/Tracardi/tracardi-python-sdk.git'
+        'sdk-pkg @ git+https://github.com/Tracardi/tracardi-python-sdk.git#egg=sdk-pkg'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
