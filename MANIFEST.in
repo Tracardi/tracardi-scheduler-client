@@ -1,1 +1,1 @@
-recursive-include tracardi/model *
+recursive-include tracardi_track_client/model *
