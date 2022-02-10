@@ -8,10 +8,6 @@ setup(
     author_email='risto.kowaczewski@gmail.com',
     packages=['tracardi_track_client'],
     install_requires=[
-        'pydantic',
-        'aiohttp',
-        'aiohttp[speedups]',
-        'requests',
         'git+https://github.com/Tracardi/tracardi-python-sdk.git'
     ],
     classifiers=[
