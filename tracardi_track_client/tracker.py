@@ -20,15 +20,16 @@ def track(callback_url, source_id, profile_id, session_id, event_type, propertie
 
     payload.context = context
     data = json.dumps(payload.dict(), default=str)
-    response = requests.post(f"{callback_url}/track", data=data)
+    track_url = f"{callback_url}/track"
+    response = requests.post(track_url, data=data)
 
-    print(response.status_code, response.json())
+    print(track_url, response.status_code, response.json())
 
 
 if __name__ == "__main__":
     track(
-        callback_url="http://localhost:8686",
-        source_id="269c443c-640b-495f-8a24-3bcde8bae172",
+        callback_url="http://192.168.1.103:8686",
+        source_id="d7a51074-d05d-4fbb-901e-bd494aa1bfb0",
         profile_id='1',
         session_id="1",
         event_type="test",
