@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='tracardi-track-client',
-    version='0.6.2.2',
+    version='0.6.2.3',
     description='Tracardi Customer Data Platform',
     author='Risto Kowaczewski',
     author_email='risto.kowaczewski@gmail.com',
