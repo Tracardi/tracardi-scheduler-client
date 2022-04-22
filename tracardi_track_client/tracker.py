@@ -10,28 +10,37 @@ def track(callback_url, source_id, profile_id, session_id, event_type, propertie
     if context is None:
         context = {}
 
-    payload = TrackerPayload(
-        source=Entity(id=source_id),
-        session=Entity(id=session_id),
-        profile=Entity(id=profile_id)
-    )
-    event = EventPayload(type=event_type, properties=properties)
-    payload.add_event(event)
+    if source_id is not None:
 
-    payload.context = context
-    data = json.dumps(payload.dict(), default=str)
-    track_url = f"{callback_url}/track"
-    response = requests.post(track_url, data=data)
+        payload = TrackerPayload(
+            source=Entity(id=source_id),
+            session=Entity(id=session_id) if session_id is not None else None,
+            profile=Entity(id=profile_id) if profile_id is not None else None
+        )
 
-    print(track_url, response.status_code, response.json())
+        event = EventPayload(type=event_type, properties=properties)
+        event.context = context
+
+        payload.add_event(event)
+
+        data = json.dumps(payload.dict(), default=str)
+        track_url = f"{callback_url}/track"
+        response = requests.post(track_url, data=data)
+
+        print(track_url, response.status_code, response.json())
+
+    else:
+
+        print("Missing source")
 
 
 if __name__ == "__main__":
     track(
         callback_url="http://192.168.1.103:8686",
         source_id="d7a51074-d05d-4fbb-901e-bd494aa1bfb0",
-        profile_id='1',
-        session_id="1",
+        profile_id=None,
+        session_id=None,
         event_type="test",
-        properties={}
+        properties={},
+        context={"aaa": 1}
     )
